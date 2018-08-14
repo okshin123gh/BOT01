@@ -4,9 +4,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 // アクセストークンを使いCurlHTTPClientをインスタンス化
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_CHANNEL_ACCESS_TOKEN'));
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('LINE_CHANNEL_SECRET')]);
 // LINE Messaging APIがリクエストに付与した署名を取得
 $signature = $_SERVER['HTTP_' . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 
@@ -46,7 +46,7 @@ foreach ($events as $event) {
   );
   */
   /*
-  // Buttonsテンプレートメッセージを返信
+  // Buttonsテンプレートメッセージを返信
   replyButtonsTemplate($bot,
     $event->getReplyToken(),
     'お天気お知らせ - 今日は天気予報は晴れです',
@@ -65,7 +65,7 @@ foreach ($events as $event) {
   );
   */
   /*
-  // Confirmテンプレートメッセージを返信
+  // Confirmテンプレートメッセージを返信
   replyConfirmTemplate($bot,
     $event->getReplyToken(),
     'Webで詳しく見ますか？',
@@ -77,7 +77,7 @@ foreach ($events as $event) {
   );
   */
   /*
-  // Carouselテンプレートメッセージを返信
+  // Carouselテンプレートメッセージを返信
   // ダイアログの配列
   $columnArray = array();
   for($i = 0; $i < 5; $i++) {
